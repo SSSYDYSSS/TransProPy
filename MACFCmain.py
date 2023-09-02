@@ -2,7 +2,7 @@ from numpy import *
 import _1_function
 from collections import Counter
 
-def MACFCmain(max_rank):
+def MACFCmain(max_rank, lable_name, data_path='../data/gene_tpm.csv', label_path='../data/tumor_class.csv'):
     """
     1.1_feature_ranking_modle.
     Applying the MACFC selection for relevant feature genes in classification.
@@ -33,7 +33,7 @@ def MACFCmain(max_rank):
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     """
     # 加载 UCI 数据
-    f, c = _1_function.load_data()
+    f, c = _1_function.load_data(lable_name, data_path, label_path)
 
     pos, neg = set(c)
     n0, n1 = list(c).count(pos), list(c).count(neg)
