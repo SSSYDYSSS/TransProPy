@@ -1,0 +1,16 @@
+from setuptools import setup, find_packages
+
+setup(
+    name='TransProPy',
+    version='0.0.1',
+    packages=find_packages(),
+    install_requires=[
+        "numpy",
+        "pandas",
+        "setuptools"
+    ],
+    url='https://github.com/SSSYDYSSS/TransProPy',
+    author='Yu Dongyue',
+    author_email='yudongyue@mail.nankai.edu.cn',
+    description='A collection of deep learning models that integrate algorithms and various machine learning approaches to extract features (genes) effective for classification and attribute them accordingly.'
+)
