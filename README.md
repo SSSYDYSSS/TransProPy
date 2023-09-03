@@ -1,5 +1,5 @@
 # TransProPy
-
+<img src="image/TransProPy_Pylogo.png" alt="TransProPy Logo" width="200" height="200" align="right">
 A collection of deep learning models that integrate algorithms and various machine learning approaches to extract features (genes) effective for classification and attribute them accordingly.
 
 ## Installation
