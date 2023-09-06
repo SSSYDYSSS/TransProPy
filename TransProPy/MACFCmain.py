@@ -1,7 +1,7 @@
 from numpy import *
-import TransProPy.UtilsFunction1.LoadData as load_data
-import TransProPy.UtilsFunction1.FeatureRanking as feature_ranking
-import TransProPy.UtilsFunction1.PrintResults as print_results
+from TransProPy.UtilsFunction1.LoadData import load_data
+from TransProPy.UtilsFunction1.FeatureRanking import feature_ranking
+from TransProPy.UtilsFunction1.PrintResults import print_results
 from collections import Counter
 
 def MACFCmain(max_rank, lable_name, data_path='../data/gene_tpm.csv', label_path='../data/tumor_class.csv'):
