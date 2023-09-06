@@ -1,6 +1,7 @@
 from pandas import *
 from numpy import *
-from TransProPy.UtilsFunction1.auto_norm import auto_norm
+import os
+from TransProPy.UtilsFunction1.AutoNorm import auto_norm
 
 def load_data(lable_name, data_path='../data/gene_tpm.csv', label_path='../data/tumor_class.csv'):
     """
