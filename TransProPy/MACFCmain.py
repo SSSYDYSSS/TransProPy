@@ -1,5 +1,7 @@
 from numpy import *
-import TransProPy._1_function
+import TransProPy.UtilsFunction1.load_data as load_data
+import TransProPy.UtilsFunction1.feature_ranking as feature_ranking
+import TransProPy.UtilsFunction1.print_results as print_results
 from collections import Counter
 
 def MACFCmain(max_rank, lable_name, data_path='../data/gene_tpm.csv', label_path='../data/tumor_class.csv'):
@@ -33,18 +35,18 @@ def MACFCmain(max_rank, lable_name, data_path='../data/gene_tpm.csv', label_path
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     """
     # 加载 UCI 数据
-    f, c = TransProPy._1_function.load_data(lable_name, data_path, label_path)
+    f, c = load_data(lable_name, data_path, label_path)
 
     pos, neg = set(c)
     n0, n1 = list(c).count(pos), list(c).count(neg)
 
-    FName, Fauc, fr, fre = TransProPy._1_function.feature_ranking(f, c, max_rank, pos, neg, n0, n1)  # 注意，这里把 n0 和 n1 作为参数传递了
+    FName, Fauc, fr, fre = feature_ranking(f, c, max_rank, pos, neg, n0, n1)  # 注意，这里把 n0 和 n1 作为参数传递了
 
     fre1 = dict(Counter(fre))
     fre2 = {key: value for key, value in fre1.items() if value > 1}
     frequency = sorted(fre2.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
 
-    TransProPy._1_function.print_results(fr, fre1, frequency, len(FName), FName, Fauc)
+    print_results(fr, fre1, frequency, len(FName), FName, Fauc)
     return(fr, fre1, frequency, len(FName), FName, Fauc)
 
 

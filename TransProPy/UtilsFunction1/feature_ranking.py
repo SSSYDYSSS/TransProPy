@@ -1,5 +1,5 @@
 from numpy import *
-from TransProPy._1_function import auc
+from TransProPy.UtilsFunction1.auc import auc
 def feature_ranking(f, c, max_rank, pos, neg, n0, n1):
     f_auc = []
     f_no = [str(i) for i in range(shape(f)[0])]
