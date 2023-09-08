@@ -2,8 +2,8 @@ from pandas import *
 from numpy import *
 import os
 from TransProPy.UtilsFunction1.AutoNorm import auto_norm
-
-def load_data(lable_name, data_path='../data/gene_tpm.csv', label_path='../data/tumor_class.csv'):
+from TransProPy.UtilsFunction1.FilterSamples import filter_samples
+def load_data(lable_name, threshold, data_path='../data/gene_tpm.csv', label_path='../data/tumor_class.csv'):
     """
     Data Reading and Transformation.
         Data normalization for constant value
@@ -20,7 +20,10 @@ def load_data(lable_name, data_path='../data/gene_tpm.csv', label_path='../data/
         For example: '../data/tumor_class.csv'
         Please note: The input sample categories must be in a numerical binary format, such as: 1,2,1,1,2,2,1.
         In this case, the numerical values represent the following classifications: 1: male; 2: female.
-    ---------------------------------------------------------------------------------------------------
+    threshold : float
+        For example: 0.9
+        The set threshold indicates the proportion of non-zero value samples to all samples in each feature.
+    --------------------------------------------------------------------------------------------------------
     Returns:
     transpose(f) : ndarray
         A transposed feature-sample matrix.
@@ -38,7 +41,8 @@ def load_data(lable_name, data_path='../data/gene_tpm.csv', label_path='../data/
             f"The label file was not found at '{label_path}'. Please ensure it's in the correct location.")
 
     # Continue with the rest of your function
-    data = read_csv(data_path, header=0, index_col=0)
+    data = filter_samples(threshold, data_path)
+    # data = read_csv(data_path, header=0, index_col=0)
     data = data.transpose()
     lable = read_csv(label_path, header=0, index_col=0)
     lable = lable[lable_name]
