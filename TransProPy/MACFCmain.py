@@ -4,7 +4,7 @@ from TransProPy.UtilsFunction1.FeatureRanking import feature_ranking
 from TransProPy.UtilsFunction1.PrintResults import print_results
 from collections import Counter
 
-def MACFCmain(max_rank, lable_name, data_path='../data/gene_tpm.csv', label_path='../data/tumor_class.csv'):
+def MACFCmain(max_rank, lable_name, threshold, data_path='../data/gene_tpm.csv', label_path='../data/tumor_class.csv'):
     """
     1.1_feature_ranking_modle.
     Applying the MACFC selection for relevant feature genes in classification.
@@ -22,7 +22,10 @@ def MACFCmain(max_rank, lable_name, data_path='../data/gene_tpm.csv', label_path
         For example: '../data/tumor_class.csv'
         Please note: The input sample categories must be in a numerical binary format, such as: 1,2,1,1,2,2,1.
         In this case, the numerical values represent the following classifications: 1: male; 2: female.
-    ---------------------------------------------------------------------------------------------------
+    threshold : float
+        For example: 0.9
+        The set threshold indicates the proportion of non-zero value samples to all samples in each feature.
+    --------------------------------------------------------------------------------------------------------
 
     Returns:
     fr : List of strings
@@ -44,7 +47,7 @@ def MACFCmain(max_rank, lable_name, data_path='../data/gene_tpm.csv', label_path
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     """
     # 加载 UCI 数据
-    f, c = load_data(lable_name, data_path, label_path)
+    f, c = load_data(lable_name, threshold, data_path, label_path)
 
     pos, neg = set(c)
     n0, n1 = list(c).count(pos), list(c).count(neg)
