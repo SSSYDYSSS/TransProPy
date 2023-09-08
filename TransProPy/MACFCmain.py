@@ -13,7 +13,16 @@ def MACFCmain(max_rank, lable_name, data_path='../data/gene_tpm.csv', label_path
     Parameters:
     max_rank : int
         The total number of gene combinations you want to obtain.
-    -------------------------------------------------------------
+    lable_name : string
+        For example: gender, age, altitude, temperature, quality, and other categorical variable names.
+    data_path : String
+        For example: '../data/gene_tpm.csv'
+        Please note: Preprocess the input data in advance to remove samples that contain too many missing values or zeros.
+    label_path : String
+        For example: '../data/tumor_class.csv'
+        Please note: The input sample categories must be in a numerical binary format, such as: 1,2,1,1,2,2,1.
+        In this case, the numerical values represent the following classifications: 1: male; 2: female.
+    ---------------------------------------------------------------------------------------------------
 
     Returns:
     fr : List of strings

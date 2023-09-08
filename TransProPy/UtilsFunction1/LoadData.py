@@ -14,8 +14,12 @@ def load_data(lable_name, data_path='../data/gene_tpm.csv', label_path='../data/
         For example: gender, age, altitude, temperature, quality, and other categorical variable names.
     data_path : String
         For example: '../data/gene_tpm.csv'
+        Please note: Preprocess the input data in advance to remove samples that contain too many missing values or zeros.
+        The input data matrix should have genes as rows and samples as columns.
     label_path : String
         For example: '../data/tumor_class.csv'
+        Please note: The input sample categories must be in a numerical binary format, such as: 1,2,1,1,2,2,1.
+        In this case, the numerical values represent the following classifications: 1: male; 2: female.
     ---------------------------------------------------------------------------------------------------
     Returns:
     transpose(f) : ndarray

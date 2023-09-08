@@ -11,6 +11,7 @@ def auto_norm(data):
         1.This function does indeed have specific requirements for the row and column order of the input matrix data. Rows should represent individual samples, and columns should represent different features. In other words, each row vector represents a sample containing multiple features.
         2.Each column of the matrix will be independently normalized, so different features should be placed in separate columns.
     -----------------------------------------------------------------------------------------------------------------------------
+    Returns:
     norm_data:ndarray
         It is the normalized data.
     ------------------------------
