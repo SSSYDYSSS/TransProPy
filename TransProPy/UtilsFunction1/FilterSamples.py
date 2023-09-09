@@ -24,4 +24,4 @@ def filter_samples(threshold, data_path='../data/gene_tpm.csv'):
     # 根据阈值过滤行
     X = data[non_zero_counts / data.shape[1] > threshold]
     # 输出结果
-    print(X)
+    return X
