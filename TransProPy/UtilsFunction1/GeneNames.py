@@ -2,14 +2,12 @@ import os
 from pandas import read_csv, merge
 
 
-def load_data(data_path='../data/gene_tpm.csv'):
+def gene_name(data_path='../data/gene_tpm.csv'):
     """
     Extract gene_names data.
     ------------------------
     Parameters:
-    lable_name : string
-        For example: gender, age, altitude, temperature, quality, and other categorical variable names.
-    data_path : String
+    data_path: String
         For example: '../data/gene_tpm.csv'
         Please note: Preprocess the input data in advance to remove samples that contain too many missing values or zeros.
         The input data matrix should have genes as rows and samples as columns.
