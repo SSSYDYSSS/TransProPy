@@ -7,10 +7,13 @@ def gene_name(data_path='../data/gene_tpm.csv'):
     Extract gene_names data.
     ------------------------
     Parameters:
-    data_path: String
+    data_path: string
         For example: '../data/gene_tpm.csv'
         Please note: Preprocess the input data in advance to remove samples that contain too many missing values or zeros.
         The input data matrix should have genes as rows and samples as columns.
+    ---------------------------------------------------------------------------
+    Return:
+    gene_name: list
     ---------------------------------------------------------------------------
     """
     # Check if the data files exist at the given paths

@@ -9,36 +9,34 @@ def MACFCmain(max_rank, lable_name, threshold, data_path='../data/gene_tpm.csv',
     1.1_feature_ranking_modle.
     Applying the MACFC selection for relevant feature genes in classification.
     --------------------------------------------------------------------------
-
     Parameters:
-    max_rank : int
+    max_rank: int
         The total number of gene combinations you want to obtain.
-    lable_name : string
+    lable_name: string
         For example: gender, age, altitude, temperature, quality, and other categorical variable names.
-    data_path : String
+    data_path: string
         For example: '../data/gene_tpm.csv'
         Please note: Preprocess the input data in advance to remove samples that contain too many missing values or zeros.
-    label_path : String
+    label_path: string
         For example: '../data/tumor_class.csv'
         Please note: The input sample categories must be in a numerical binary format, such as: 1,2,1,1,2,2,1.
         In this case, the numerical values represent the following classifications: 1: male; 2: female.
-    threshold : float
+    threshold: float
         For example: 0.9
         The set threshold indicates the proportion of non-zero value samples to all samples in each feature.
     --------------------------------------------------------------------------------------------------------
-
     Returns:
-    fr : List of strings
+    fr: list of strings
         representing ranked features.
-    fre1 : Dictionary
+    fre1: dictionary
         feature names as keys and their frequencies as values.
-    frequency : List of tuples
+    frequency: list of tuples
         feature names and their frequencies.
-    len(FName) : Integer
+    len(FName): integer
         count of AUC values greater than 0.5.
-    FName : Array of strings
+    FName: array of strings
         feature names after ranking with AUC > 0.5.
-    Fauc : Array of floats
+    Fauc: array of floats
         AUC values corresponding to the ranked feature names.
     ---------------------------------------------------------
 

@@ -10,24 +10,24 @@ def load_data(lable_name, threshold, data_path='../data/gene_tpm.csv', label_pat
         Extract matrix data and categorical data.
     ---------------------------------------------
     Parameters:
-    lable_name : string
+    lable_name: string
         For example: gender, age, altitude, temperature, quality, and other categorical variable names.
-    data_path : String
+    data_path: string
         For example: '../data/gene_tpm.csv'
         Please note: Preprocess the input data in advance to remove samples that contain too many missing values or zeros.
         The input data matrix should have genes as rows and samples as columns.
-    label_path : String
+    label_path: string
         For example: '../data/tumor_class.csv'
         Please note: The input sample categories must be in a numerical binary format, such as: 1,2,1,1,2,2,1.
         In this case, the numerical values represent the following classifications: 1: male; 2: female.
-    threshold : float
+    threshold: float
         For example: 0.9
         The set threshold indicates the proportion of non-zero value samples to all samples in each feature.
     --------------------------------------------------------------------------------------------------------
     Returns:
-    transpose(f) : ndarray
+    transpose(f): ndarray
         A transposed feature-sample matrix.
-    c : ndarray
+    c: ndarray
         A NumPy array containing classification labels.
     ---------------------------------------------------------
     """

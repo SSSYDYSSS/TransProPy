@@ -17,7 +17,8 @@ def gene_map_feature(gene_names, ranked_features):
     """
     gene_to_feature_mapping = {}
 
-    for feature_index in ranked_features:
+    for feature_index_str in ranked_features:
+        feature_index = int(feature_index_str)
         if 0 <= feature_index < len(gene_names):
             gene_name = gene_names[feature_index]
             gene_to_feature_mapping[gene_name] = feature_index
