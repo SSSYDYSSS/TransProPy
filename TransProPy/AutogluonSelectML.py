@@ -1,5 +1,5 @@
 from autogluon.tabular import TabularDataset, TabularPredictor
-from UtilsFunction2 import split_data
+from TransProPy.UtilsFunction2 import split_data
 
 def AutoGluon_SelectML(gene_data_path, class_data_path, label_column, test_size, threshold, hyperparameters=None, time_limit=120, random_state=42):
     """
