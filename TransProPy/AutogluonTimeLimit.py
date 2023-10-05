@@ -1,5 +1,5 @@
 from autogluon.tabular import TabularDataset, TabularPredictor
-from TransProPy.UtilsFunction2 import split_data
+from TransProPy.UtilsFunction2.splitdata import split_data
 def Autogluon_TimeLimit(gene_data_path, class_data_path, label_column, test_size, threshold, time_limit=120, random_state=42):
     """
     2.1_autogluon_time-limit.
