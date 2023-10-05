@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-def split_data(gene_data_path, class_data_path, class_name, test_size=0.2, random_state=42, threshold=0.9):
+def split_data(gene_data_path, class_data_path, class_name, test_size=0.2, random_state=42, threshold=0.9, random_feature=None):
     """
     Reads the gene expression and class data, processes it, and splits it into training and testing sets.
 
@@ -14,6 +14,7 @@ def split_data(gene_data_path, class_data_path, class_name, test_size=0.2, rando
     - test_size (float, optional): The proportion of the data to be used as the testing set. Default is 0.2.
     - random_state (int, optional): The seed used by the random number generator. Default is 42.
     - threshold (float, optional): The threshold used to filter out rows based on the proportion of non-zero values. Default is 0.9.
+    - random_feature (int, optional): The number of random feature to select. If None, no random feature selection is performed. Default is None.
 
     Returns:
     - train_data (pd.DataFrame): The training data.
@@ -30,6 +31,10 @@ def split_data(gene_data_path, class_data_path, class_name, test_size=0.2, rando
     # Filtering out low-quality data
     non_zero_counts = X.astype(bool).sum(axis=1)
     X = X[non_zero_counts / X.shape[1] > threshold]
+
+    # If random_sample is specified, perform random sampling on X
+    if random_feature is not None:
+        X = X.sample(n=random_feature, random_state=random_state)
 
     # Keeping only the common samples in X and y
     X = X.loc[:, common]
