@@ -1,7 +1,7 @@
 from autogluon.tabular import TabularDataset, TabularPredictor
 from TransProPy.UtilsFunction2.splitdata import split_data
 
-def AutoGluon_SelectML(gene_data_path, class_data_path, label_column, test_size, threshold, hyperparameters=None, time_limit=120, random_state=42):
+def AutoGluon_SelectML(gene_data_path, class_data_path, label_column, test_size, threshold, hyperparameters=None, random_feature=None, time_limit=120, random_state=42):
     """
     Trains a model using AutoGluon on provided data path and returns feature importance and model leaderboard.
 
@@ -15,6 +15,7 @@ def AutoGluon_SelectML(gene_data_path, class_data_path, label_column, test_size,
     - threshold (float): The threshold used to filter out rows based on the proportion of non-zero values.
     - hyperparameters (dict, optional): Dictionary of hyperparameters for the models.
         For example: {'GBM': {}, 'RF': {}}
+    - random_feature (int, optional): The number of random feature to select. If None, no random feature selection is performed. Default is None.
     - time_limit (int, optional): Time limit for training in seconds. Default is 120.
     - random_state (int, optional): The seed used by the random number generator. Default is 42.
 
@@ -23,7 +24,7 @@ def AutoGluon_SelectML(gene_data_path, class_data_path, label_column, test_size,
     - leaderboard (DataFrame): DataFrame containing model performance on the test data.
     """
 
-    train_data, test_data = split_data(gene_data_path, class_data_path, class_name=label_column, test_size=test_size, random_state=random_state, threshold=threshold)
+    train_data, test_data = split_data(gene_data_path, class_data_path, class_name=label_column, test_size=test_size, random_state=random_state, threshold=threshold, random_feature=random_feature)
     train_data = TabularDataset(train_data)
     test_data = TabularDataset(test_data)
 
