@@ -39,9 +39,8 @@ def MACFCmain(max_rank, lable_name, threshold, data_path='../data/gene_tpm.csv',
     Fauc: array of floats
         AUC values corresponding to the ranked feature names.
     ---------------------------------------------------------
-
     References:
-    Su,Y., Du,K., Wang,J., Wei,J. and Liu,J. (2022) Multi-variable AUC for sifting complementary features and its biomedical application. Briefings in Bioinformatics, 23, bbac029.
+    - Su,Y., Du,K., Wang,J., Wei,J. and Liu,J. (2022) Multi-variable AUC for sifting complementary features and its biomedical application. Briefings in Bioinformatics, 23, bbac029.
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     """
     # 加载 UCI 数据
