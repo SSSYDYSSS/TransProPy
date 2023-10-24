@@ -48,7 +48,7 @@ def load_data(lable_name, threshold, data_path='../data/gene_tpm.csv', label_pat
     lable = lable[lable_name]
     data = merge(data, lable, left_index=True, right_index=True)
     values = unique(data.values, axis=0)
-    f = auto_norm(values[:, :-1])  # data normalization for constant value; assuming you have auto_norm function defined somewhere
+    f = auto_norm(values[:, :-1])  # data normalization for constant value
     c = values[:, -1]
 
     return transpose(f), c

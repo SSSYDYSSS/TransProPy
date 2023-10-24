@@ -5,8 +5,8 @@ A collection of deep learning models that integrate algorithms and various machi
 ## Installation
 
 ```bash
-pip install TransProPy
-pip install git+https://github.com/SSSYDYSSS/TransProPy.git
+pip3 install TransProPy
+pip3 install git+https://github.com/SSSYDYSSS/TransProPy.git
 ```
 
 ## Usage

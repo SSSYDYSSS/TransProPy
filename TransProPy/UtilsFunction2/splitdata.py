@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 def split_data(gene_data_path, class_data_path, class_name, test_size=0.2, random_state=42, threshold=0.9, random_feature=None):
     """
     Reads the gene expression and class data, processes it, and splits it into training and testing sets.
-
+    -----------------------------------------------------------------------------------------------------
     Parameters:
     - gene_data_path (str): Path to the CSV file containing the gene expression data.
         For example: '../data/gene_tpm.csv'
@@ -15,10 +15,11 @@ def split_data(gene_data_path, class_data_path, class_name, test_size=0.2, rando
     - random_state (int, optional): The seed used by the random number generator. Default is 42.
     - threshold (float, optional): The threshold used to filter out rows based on the proportion of non-zero values. Default is 0.9.
     - random_feature (int, optional): The number of random feature to select. If None, no random feature selection is performed. Default is None.
-
+    ---------------------------------------------------------------------------------------------------------------------------------------------
     Returns:
     - train_data (pd.DataFrame): The training data.
     - test_data (pd.DataFrame): The testing data.
+    ---------------------------------------------
     """
 
     # Reading the data

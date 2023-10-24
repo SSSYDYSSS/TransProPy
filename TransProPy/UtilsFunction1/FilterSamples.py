@@ -17,11 +17,11 @@ def filter_samples(threshold, data_path='../data/gene_tpm.csv'):
     -----------------------------------
     """
     data = pd.read_csv(data_path, index_col=0, header=0)
-    # 计算每一行的非零值数量
+    # Calculate the count of non-zero values in each row.
     non_zero_counts = data.astype(bool).sum(axis=1)
-    # 设置阈值，表示大多数基因表达为0的比例
+    # Set a threshold indicating the proportion of gene expressions that are zeros.
     # threshold = 0.9
-    # 根据阈值过滤行
+    # Filter rows based on the threshold.
     X = data[non_zero_counts / data.shape[1] > threshold]
-    # 输出结果
+    # Return the result.
     return X
