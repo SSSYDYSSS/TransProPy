@@ -7,6 +7,8 @@ def feature_ranking(f, c, max_rank, pos, neg, n0, n1):
     f_ne = []
     fl = shape(f_no)[0]
     # print('fl ', fl)
+
+
     for j in range(fl):
         argfv = argsort(f[j])
         slofe = c[argfv]

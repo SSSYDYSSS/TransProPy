@@ -18,7 +18,8 @@ def load_data(lable_name, threshold, data_path='../data/gene_tpm.csv', label_pat
         The input data matrix should have genes as rows and samples as columns.
     label_path: string
         For example: '../data/tumor_class.csv'
-        Please note: The input sample categories must be in a numerical binary format, such as: 1,2,1,1,2,2,1.
+        Please note: The input CSV data should have rows representing sample names and columns representing class names.
+        The input sample categories must be in a numerical binary format, such as: 1,2,1,1,2,2,1.
         In this case, the numerical values represent the following classifications: 1: male; 2: female.
     threshold: float
         For example: 0.9

@@ -32,6 +32,7 @@ def MACFCmain(max_rank, lable_name, threshold, data_path='../data/gene_tpm.csv',
         feature names as keys and their frequencies as values.
     frequency: list of tuples
         feature names and their frequencies.
+        The frequency outputs a list sorted by occurrence frequency (in descending order). This list includes only those elements from the dictionary fre1 (which represents the counted frequencies of elements in the original data) that have an occurrence frequency greater than once, along with their frequencies.
     len(FName): integer
         count of AUC values greater than 0.5.
     FName: array of strings
@@ -43,13 +44,13 @@ def MACFCmain(max_rank, lable_name, threshold, data_path='../data/gene_tpm.csv',
     - Su,Y., Du,K., Wang,J., Wei,J. and Liu,J. (2022) Multi-variable AUC for sifting complementary features and its biomedical application. Briefings in Bioinformatics, 23, bbac029.
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     """
-    # 加载 UCI 数据
+    # load data
     f, c = load_data(lable_name, threshold, data_path, label_path)
 
     pos, neg = set(c)
     n0, n1 = list(c).count(pos), list(c).count(neg)
 
-    FName, Fauc, fr, fre = feature_ranking(f, c, max_rank, pos, neg, n0, n1)  # 注意，这里把 n0 和 n1 作为参数传递了
+    FName, Fauc, fr, fre = feature_ranking(f, c, max_rank, pos, neg, n0, n1)  # Note that here n0 and n1 are passed as parameters.
 
     fre1 = dict(Counter(fre))
     fre2 = {key: value for key, value in fre1.items() if value > 1}
