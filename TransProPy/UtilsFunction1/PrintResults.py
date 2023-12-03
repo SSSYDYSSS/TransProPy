@@ -1,4 +1,5 @@
-def print_results(fr, fre1, frequency, len_FName, FName, Fauc):
+def print_results(high_auc_features, fr, fre1, frequency, len_FName, FName, Fauc):
+
     print('Ranked features (start from higher rank): ', fr)
     print('Features and its frequency: ', fre1)
     print('Sorted features with frequency higher than 1: ', frequency)

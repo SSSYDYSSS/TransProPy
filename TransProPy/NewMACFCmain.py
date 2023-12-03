@@ -52,13 +52,13 @@ def New_MACFCmain(max_rank, lable_name, threshold, data_path='../data/gene_tpm.c
     pos, neg = set(c)
     n0, n1 = list(c).count(pos), list(c).count(neg)
 
-    auc_one_features, FName, Fauc, fr, fre = new_feature_ranking(f, c, max_rank, pos, neg, n0, n1)  # Note that here n0 and n1 are passed as parameters.
+    high_auc_features, FName, Fauc, fr, fre = new_feature_ranking(f, c, max_rank, pos, neg, n0, n1)  # Note that here n0 and n1 are passed as parameters.
 
     fre1 = dict(Counter(fre))
     fre2 = {key: value for key, value in fre1.items() if value > 1}
     frequency = sorted(fre2.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
 
-    print_results(fr, fre1, frequency, len(FName), FName, Fauc)
-    return(auc_one_features, fr, fre1, frequency, len(FName), FName, Fauc)
+    # print_results(fr, fre1, frequency, len(FName), FName, Fauc)
+    return(high_auc_features, fr, fre1, frequency, len(FName), FName, Fauc)
 
 

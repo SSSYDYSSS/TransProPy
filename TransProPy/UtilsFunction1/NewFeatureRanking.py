@@ -8,8 +8,9 @@ def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
     f_ne = []
     fl = shape(f_no)[0]
 
-    # 新增：用于存储AUC为1的特征
-    auc_one_features = []
+    # New addition: To store features with AUC greater than 0.95 and their AUC values
+
+    high_auc_features = []
 
     # Calculate the AUC for each feature
     for j in range(fl):
@@ -27,9 +28,9 @@ def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
         f_auc.append(a)
         f_ne.append(ne)
 
-        # 新增：检查并记录AUC为1的特征
-        if a == 1:
-            auc_one_features.append(f_no[j])
+        # New addition: Check and record features with AUC greater than 0.95.
+        if a > 0.95:
+            high_auc_features.append((f_no[j], a))
 
         ml = 1
         mr = 1
@@ -52,17 +53,17 @@ def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
                 mr = size(slofe)
         f_mtf[j][argfv[ml:mr]] = True
 
-        # 新增：从原始特征中排除AUC为1的特征
+    # New addition: Exclude features with AUC greater than 0.95 from the original set.
     remaining_indices = [i for i, a in enumerate(f_auc) if a != 1]
     remaining_f_no = [f_no[i] for i in remaining_indices]
     remaining_f_auc = [f_auc[i] for i in remaining_indices]
     remaining_f_mtf = [f_mtf[i] for i in remaining_indices]
     remaining_f_ne = [f_ne[i] for i in remaining_indices]
 
-    # 更新fl为剩余特征的数量
+    # Update 'fl' to the number of remaining features.
     fl = len(remaining_f_no)
 
-    # 对剩余特征进行排序和处理
+    # Sort and process the remaining features.
     arg_auc = argsort(-array(remaining_f_auc))
     FName = array(remaining_f_no)[arg_auc]
     Fvalue = array(f)[arg_auc]
@@ -175,7 +176,7 @@ def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
         rankset = rankset + list(gg)[:over]
 
 
-    # Return the features with an AUC of 1, and other ranked and filtered feature information
-    return auc_one_features, FName, Fauc, rankset, ranklist
+    # Return the features with an AUC greater than 0.95, and other ranked and filtered feature information
+    return high_auc_features, FName, Fauc, rankset, ranklist
 
 

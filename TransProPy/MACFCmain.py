@@ -56,7 +56,7 @@ def MACFCmain(max_rank, lable_name, threshold, data_path='../data/gene_tpm.csv',
     fre2 = {key: value for key, value in fre1.items() if value > 1}
     frequency = sorted(fre2.items(), key=lambda kv: (kv[1], kv[0]), reverse=True)
 
-    print_results(fr, fre1, frequency, len(FName), FName, Fauc)
+    # print_results(fr, fre1, frequency, len(FName), FName, Fauc)
     return(fr, fre1, frequency, len(FName), FName, Fauc)
 
 
