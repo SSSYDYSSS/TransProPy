@@ -3,17 +3,17 @@ from TransProPy.UtilsFunction1.Auc import auc
 
 def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
     f_auc = []
-    f_no = [str(i) for i in range(np.shape(f)[0])]
-    f_mtf = np.full((np.shape(f)[0], np.shape(f)[1]), False)
+    f_no = [str(i) for i in range(shape(f)[0])]
+    f_mtf = full((shape(f)[0], shape(f)[1]), False)
     f_ne = []
-    fl = np.shape(f_no)[0]
+    fl = shape(f_no)[0]
 
     # 新增：用于存储AUC为1的特征
     auc_one_features = []
 
     # Calculate the AUC for each feature
     for j in range(fl):
-        argfv = np.argsort(f[j])
+        argfv = argsort(f[j])
         slofe = c[argfv]
         ne = slofe[0]
         a = auc(slofe, ne, n0, n1)
