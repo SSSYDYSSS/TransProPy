@@ -32,6 +32,9 @@ def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
         if a > 0.95:
             high_auc_features.append((f_no[j], a))
 
+        # Sort high_auc_features by AUC value
+        high_auc_features = sorted(high_auc_features, key=lambda x: x[1], reverse=True)
+
         ml = 1
         mr = 1
         for i in range(1, size(slofe)):
@@ -54,7 +57,7 @@ def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
         f_mtf[j][argfv[ml:mr]] = True
 
     # New addition: Exclude features with AUC greater than 0.95 from the original set.
-    remaining_indices = [i for i, a in enumerate(f_auc) if a != 1]
+    remaining_indices = [i for i, a in enumerate(f_auc) if a <= 0.95]
     remaining_f_no = [f_no[i] for i in remaining_indices]
     remaining_f_auc = [f_auc[i] for i in remaining_indices]
     remaining_f_mtf = [f_mtf[i] for i in remaining_indices]

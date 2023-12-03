@@ -26,8 +26,8 @@ def New_MACFCmain(max_rank, lable_name, threshold, data_path='../data/gene_tpm.c
         The set threshold indicates the proportion of non-zero value samples to all samples in each feature.
     --------------------------------------------------------------------------------------------------------
     Returns:
-    auc_one_features: list of strings
-        This list contains the indices of features in the original dataset that have an Area Under the Curve (AUC) value of 1, indicating perfect classification performance. Each feature is represented by its index in string format, signifying its ability to distinctly separate different classes in the classification task.
+    high_auc_features: list of tuples
+        This list contains tuples of feature indices and their corresponding AUC values, where the AUC value is greater than 0.95. Each tuple consists of the feature's index in string format and its AUC value as a float. This signifies that these features are highly predictive, with a strong ability to distinguish between different classes in the classification task.
     fr: list of strings
         representing ranked features.
     fre1: dictionary
