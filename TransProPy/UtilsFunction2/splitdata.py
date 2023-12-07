@@ -1,4 +1,5 @@
 import pandas as pd
+from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 
 def split_data(gene_data_path, class_data_path, class_name, test_size=0.2, random_state=42, threshold=0.9, random_feature=None):
@@ -46,7 +47,13 @@ def split_data(gene_data_path, class_data_path, class_name, test_size=0.2, rando
     Y = y[class_name]
     data = pd.merge(X, Y, left_index=True, right_index=True)
 
+    # data is a DataFrame containing features and labels
+    # First, randomize the data
+    data = shuffle(data, random_state=42)
+
     # Splitting the data into training and validation sets
-    train_data, test_data = train_test_split(data, test_size=test_size, random_state=random_state)
+    # Then perform stratified sampling
+    train_data, test_data = train_test_split(data, test_size=test_size, random_state=random_state, stratify=data[class_name])
 
     return train_data, test_data
+

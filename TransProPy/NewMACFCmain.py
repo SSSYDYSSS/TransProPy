@@ -4,7 +4,7 @@ from TransProPy.UtilsFunction1.NewFeatureRanking import new_feature_ranking
 from TransProPy.UtilsFunction1.PrintResults import print_results
 from collections import Counter
 
-def New_MACFCmain(max_rank, lable_name, threshold, data_path='../data/gene_tpm.csv', label_path='../data/tumor_class.csv'):
+def New_MACFCmain(AUC_threshold, max_rank, lable_name, threshold, data_path='../data/gene_tpm.csv', label_path='../data/tumor_class.csv'):
     """
     1.1_feature_ranking_modle.
     Applying the MACFC selection for relevant feature genes in classification.
@@ -52,7 +52,7 @@ def New_MACFCmain(max_rank, lable_name, threshold, data_path='../data/gene_tpm.c
     pos, neg = set(c)
     n0, n1 = list(c).count(pos), list(c).count(neg)
 
-    high_auc_features, FName, Fauc, fr, fre = new_feature_ranking(f, c, max_rank, pos, neg, n0, n1)  # Note that here n0 and n1 are passed as parameters.
+    high_auc_features, FName, Fauc, fr, fre = new_feature_ranking(f, c, AUC_threshold, max_rank, pos, neg, n0, n1)  # Note that here n0 and n1 are passed as parameters.
 
     fre1 = dict(Counter(fre))
     fre2 = {key: value for key, value in fre1.items() if value > 1}

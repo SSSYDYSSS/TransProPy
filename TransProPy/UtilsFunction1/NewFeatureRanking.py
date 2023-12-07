@@ -1,14 +1,14 @@
 from numpy import *
 from TransProPy.UtilsFunction1.Auc import auc
 
-def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
+def new_feature_ranking(f, c, AUC_threshold, max_rank, pos, neg, n0, n1):
     f_auc = []
     f_no = [str(i) for i in range(shape(f)[0])]
     f_mtf = full((shape(f)[0], shape(f)[1]), False)
     f_ne = []
     fl = shape(f_no)[0]
 
-    # New addition: To store features with AUC greater than 0.95 and their AUC values
+    # New addition: To store features with AUC greater than AUC_threshold and their AUC values
 
     high_auc_features = []
 
@@ -28,8 +28,8 @@ def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
         f_auc.append(a)
         f_ne.append(ne)
 
-        # New addition: Check and record features with AUC greater than 0.95.
-        if a > 0.95:
+        # New addition: Check and record features with AUC greater than AUC_threshold.
+        if a > AUC_threshold:
             high_auc_features.append((f_no[j], a))
 
         # Sort high_auc_features by AUC value
@@ -56,8 +56,8 @@ def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
                 mr = size(slofe)
         f_mtf[j][argfv[ml:mr]] = True
 
-    # New addition: Exclude features with AUC greater than 0.95 from the original set.
-    remaining_indices = [i for i, a in enumerate(f_auc) if a <= 0.95]
+    # New addition: Exclude features with AUC greater than AUC_threshold from the original set.
+    remaining_indices = [i for i, a in enumerate(f_auc) if a <= AUC_threshold]
     remaining_f_no = [f_no[i] for i in remaining_indices]
     remaining_f_auc = [f_auc[i] for i in remaining_indices]
     remaining_f_mtf = [f_mtf[i] for i in remaining_indices]
@@ -179,7 +179,7 @@ def new_feature_ranking(f, c, max_rank, pos, neg, n0, n1):
         rankset = rankset + list(gg)[:over]
 
 
-    # Return the features with an AUC greater than 0.95, and other ranked and filtered feature information
+    # Return the features with an AUC greater than AUC_threshold, and other ranked and filtered feature information
     return high_auc_features, FName, Fauc, rankset, ranklist
 
 
