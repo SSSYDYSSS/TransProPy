@@ -9,7 +9,7 @@ def log_transform(data):
     -data (np.ndarray): A numerical numpy array.
     ------------------------------------------
     Returns:
-    -np.ndarray: The original data or the data transformed with log2.
+    -result(np.ndarray): The original data or the data transformed with log2.
     -----------------------------------------------------------------
     """
     # Calculate quantiles

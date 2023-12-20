@@ -10,6 +10,8 @@ def New_MACFCmain(AUC_threshold, max_rank, lable_name, threshold, data_path='../
     Applying the MACFC selection for relevant feature genes in classification.
     --------------------------------------------------------------------------
     Parameters:
+    AUC_threshold: float
+        AUC threshold for feature selection. Features with AUC values higher than this threshold are recorded but not used in subsequent calculations.
     max_rank: int
         The total number of gene combinations you want to obtain.
     lable_name: string
