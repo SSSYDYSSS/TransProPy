@@ -7,7 +7,9 @@ setup(
     install_requires=[
         "numpy",
         "pandas",
-        "setuptools"
+        "setuptools",
+        "scikit-learn",
+        "tqdm"
     ],
     url='https://github.com/SSSYDYSSS/TransProPy',
     author='Yu Dongyue',
