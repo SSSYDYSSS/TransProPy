@@ -10,7 +10,7 @@ def load_encode_labels(file_path, column_name):
     column_name (str): Name of the column to be encoded.
 
     Returns:
-    pd.DataFrame: A DataFrame containing the encoded numeric labels.
+    Y (pd.DataFrame): A DataFrame containing the encoded numeric labels.
     """
 
     # Load the data

@@ -23,14 +23,14 @@ def setup_logging_and_progress_bar(n_iter, n_cv):
     file_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s: %(message)s'))
 
     # Create a stream handler for logging to the console
-    stream_handler = logging.StreamHandler()
-    stream_handler.setLevel(logging.INFO)
-    stream_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s: %(message)s'))
+    # stream_handler = logging.StreamHandler()
+    # stream_handler.setLevel(logging.INFO)
+    # stream_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s: %(message)s'))
 
     # Get the default logger and add the two handlers to it
     logger = logging.getLogger()
     logger.addHandler(file_handler)
-    logger.addHandler(stream_handler)
+    # logger.addHandler(stream_handler)
 
     # Calculate total iterations
     total_iterations = n_iter * n_cv
