@@ -28,7 +28,7 @@ def extract_and_save_results(
 
     # Extracting cross-validation results
     cv_results = clf.cv_results_
-    mean_test_scores = cv_results['mean_test_score']
+    mean_test_scores = cv_results['mean_test_score'] # Calculate the average test score for each iteration
     n_iterations = len(mean_test_scores)
 
     # Plotting and saving the accuracy per iteration figure

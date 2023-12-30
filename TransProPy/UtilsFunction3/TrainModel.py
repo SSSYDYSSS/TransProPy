@@ -42,7 +42,7 @@ def train_model(X, Y, feature_selection, parameters, n_iter, n_cv, n_jobs=9):
     clf = RandomizedSearchCV(
         feature_selection_pipeline,
         parameters,
-        cv=n_cv,
+        cv=StratifiedKFold(n_splits=n_cv),
         scoring=make_scorer(logging_custom_scorer(n_iter=n_iter, n_cv=n_cv)),
         n_iter=n_iter,
         random_state=0,

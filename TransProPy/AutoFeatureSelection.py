@@ -8,7 +8,7 @@ from TransProPy.UtilsFunction3.ExtractAndSaveResults import extract_and_save_res
 from TransProPy.UtilsFunction3.SetupLoggingAndProgressBar import setup_logging_and_progress_bar
 from TransProPy.UtilsFunction3.UpdateProgressBar import update_progress_bar
 
-def auto_feature_selection(data_file, label_file, label_col, threshold, show_plot, show_progress, n_iter=2, n_cv=5, n_jobs=9, save_path='../data/', sleep_interval=1, use_tkagg=False):
+def auto_feature_selection(data_file, label_file, label_col, threshold, show_plot, show_progress, n_iter=5, n_cv=5, n_jobs=9, save_path='../data/', sleep_interval=1, use_tkagg=False):
     """
     Run the complete analysis pipeline from data loading to training and result extraction.
 
@@ -56,7 +56,7 @@ def auto_feature_selection(data_file, label_file, label_col, threshold, show_plo
     # Initialize tqdm progress bar and logging
     if show_progress:
         progress_bar = setup_logging_and_progress_bar(n_iter, n_cv)
-        search_thread = threading.Thread(target=run_randomized_search)
+        search_thread = threading.Thread(target=run_randomized_search) # Use threading to run RandomizedSearchCV
         search_thread.start()
 
         # Update the progress bar in the main thread
@@ -65,7 +65,7 @@ def auto_feature_selection(data_file, label_file, label_col, threshold, show_plo
             time.sleep(sleep_interval)
 
         # Ensure RandomizedSearchCV completes
-        search_thread.join()
+        search_thread.join() # The main thread will wait for the search thread to complete all search and computation processes before continuing to execute the code after the main thread. This ensures that the main thread continues only after the search process is fully completed and the results are returned.
     else:
         run_randomized_search()
 
