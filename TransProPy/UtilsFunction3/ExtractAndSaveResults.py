@@ -37,14 +37,18 @@ def extract_and_save_results(
     n_iterations = len(mean_test_scores)
 
     # Plotting and saving the accuracy per iteration figure
-    plt.figure(figsize=(4, 3))
+    plt.figure(figsize=(4, 3), facecolor='#f0f8fe')
     plt.plot(range(1, n_iterations + 1), mean_test_scores, marker='o')
     plt.title('Model Accuracy per Iteration')
     plt.xlabel('Iteration')
     plt.ylabel('Mean Test Accuracy')
-    # plt.grid(True)
-    plt.savefig(save_path + "Model_Accuracy_per_Iteration_figure.png")
-
+    plt.grid(True, color='#11479c', alpha=0.2)
+    # Get the current axes (ax), and set the background color of the plot area to white
+    ax = plt.gca()
+    ax.set_facecolor('#e1f0fb')
+    # Call tight_layout to automatically adjust the layout
+    plt.tight_layout()
+    plt.savefig(save_path + "Model_Accuracy_per_Iteration_figure.pdf", format='pdf')
     # Optionally display the plot
     if show_plot:
         plt.show()
@@ -60,14 +64,19 @@ def extract_and_save_results(
     roc_auc = roc_auc_score(Y, y_scores)
 
     # Plot and save the ROC curve
-    plt.figure(figsize=(4, 3))
+    plt.figure(figsize=(4, 3), facecolor='#f0f8fe')
     plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
     plt.plot([0, 1], [0, 1], 'k--')  # Diagonal line for a random classifier
     plt.xlabel('False Positive Rate')
     plt.ylabel('True Positive Rate')
     plt.title('ROC Curve')
     plt.legend(loc='lower right')
-    plt.savefig(save_path + "ROC_Curve_figure.png")
+    # Get the current axes (ax), and set the background color of the plot area to white
+    ax = plt.gca()
+    ax.set_facecolor('#e1f0fb')
+    # Call tight_layout to automatically adjust the layout
+    plt.tight_layout()
+    plt.savefig(save_path + "ROC_Curve_figure.pdf", format='pdf')
     # Optionally display the plot
     if show_plot:
         plt.show()
