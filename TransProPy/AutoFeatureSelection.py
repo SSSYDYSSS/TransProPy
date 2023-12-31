@@ -70,5 +70,5 @@ def auto_feature_selection(data_file, label_file, label_col, threshold, show_plo
         run_randomized_search()
 
     # Extract and save results
-    extract_and_save_results(clf, X, save_path, show_plot, use_tkagg)
+    extract_and_save_results(clf, X, Y, save_path, n_cv, show_plot, use_tkagg)
 

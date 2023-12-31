@@ -1,7 +1,7 @@
 # TransProPy.UtilsFunction3.train_model.py
 
 from sklearn.pipeline import Pipeline
-from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import StratifiedKFold, RandomizedSearchCV
 from sklearn.metrics import make_scorer
 from TransProPy.UtilsFunction3.LoggingCustomScorer import logging_custom_scorer
 from sklearn.preprocessing import StandardScaler

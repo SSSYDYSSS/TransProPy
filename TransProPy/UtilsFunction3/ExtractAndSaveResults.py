@@ -3,11 +3,16 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from TransProPy.UtilsFunction3.PrintBoxedText import print_boxed_text
+from sklearn.metrics import roc_curve, roc_auc_score
+from sklearn.model_selection import cross_val_predict
+from sklearn.model_selection import StratifiedKFold
 
 def extract_and_save_results(
         clf,
         X,
+        Y,
         save_path,
+        n_cv,
         show_plot=False,
         use_tkagg=False):
     """
@@ -32,17 +37,41 @@ def extract_and_save_results(
     n_iterations = len(mean_test_scores)
 
     # Plotting and saving the accuracy per iteration figure
-    plt.figure(figsize=(5, 3))
+    plt.figure(figsize=(4, 3))
     plt.plot(range(1, n_iterations + 1), mean_test_scores, marker='o')
     plt.title('Model Accuracy per Iteration')
     plt.xlabel('Iteration')
     plt.ylabel('Mean Test Accuracy')
-    plt.grid(True)
-    plt.savefig(save_path + "figure.png")
+    # plt.grid(True)
+    plt.savefig(save_path + "Model_Accuracy_per_Iteration_figure.png")
 
     # Optionally display the plot
     if show_plot:
         plt.show()
+
+    # plotting the ROC curve
+    # Predict probabilities
+    y_probas = cross_val_predict(clf.best_estimator_, X, Y, cv=StratifiedKFold(n_splits=n_cv), method='predict_proba')
+    # Take the probability of the positive class
+    y_scores = y_probas[:, 1]
+    # Calculate values for the ROC curve
+    fpr, tpr, thresholds = roc_curve(Y, y_scores)
+    # Calculate AUC value
+    roc_auc = roc_auc_score(Y, y_scores)
+
+    # Plot and save the ROC curve
+    plt.figure(figsize=(4, 3))
+    plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
+    plt.plot([0, 1], [0, 1], 'k--')  # Diagonal line for a random classifier
+    plt.xlabel('False Positive Rate')
+    plt.ylabel('True Positive Rate')
+    plt.title('ROC Curve')
+    plt.legend(loc='lower right')
+    plt.savefig(save_path + "ROC_Curve_figure.png")
+    # Optionally display the plot
+    if show_plot:
+        plt.show()
+
 
     # Extracting feature selection results
     feature_union = clf.best_estimator_.named_steps['feature_selection']
