@@ -37,7 +37,7 @@ def extract_and_save_results(
     n_iterations = len(mean_test_scores)
 
     # Plotting and saving the accuracy per iteration figure
-    plt.figure(figsize=(4, 3), facecolor='#f0f8fe')
+    plt.figure(figsize=(6, 4), facecolor='#f0f8fe')
     plt.plot(range(1, n_iterations + 1), mean_test_scores, marker='o')
     plt.title('Model Accuracy per Iteration')
     plt.xlabel('Iteration')
@@ -64,7 +64,7 @@ def extract_and_save_results(
     roc_auc = roc_auc_score(Y, y_scores)
 
     # Plot and save the ROC curve
-    plt.figure(figsize=(4, 3), facecolor='#f0f8fe')
+    plt.figure(figsize=(6, 4), facecolor='#f0f8fe')
     plt.plot(fpr, tpr, label='ROC curve (area = %0.2f)' % roc_auc)
     plt.plot([0, 1], [0, 1], 'k--')  # Diagonal line for a random classifier
     plt.xlabel('False Positive Rate')
