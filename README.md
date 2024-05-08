@@ -20,7 +20,7 @@ my_function()
 Yu Dongyue (2023). TransProPy: A collection of deep learning models that integrate algorithms and various machine learning approaches to extract features (genes) effective for classification and attribute them accordingly.
 
 https://github.com/SSSYDYSSS/TransProPy,
-https://sssydysss.gitbook.io/transpropy-manual/.
+https://sssydysss.github.io/TransProPyBook/.
 
 ## More examples see
 TransProPy Manual：https://sssydysss.gitbook.io/transpropy-manual/
