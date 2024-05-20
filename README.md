@@ -31,8 +31,3 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 This project is licensed under the BSD 3-Clause License - see the [LICENSE.txt](./LICENSE.txt) file for details.
 
-<<<<<<< HEAD
-
-=======
-## More information
->>>>>>> c1d1e4147bcf7f982f0b00fbd7e9d98346bf011d
