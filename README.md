@@ -18,11 +18,19 @@ from TransProCalc import my_function
 my_function()
 ```
 
-## Citation
-Yu Dongyue (2023). TransProPy: A python package that integrate algorithms and various machine learning approaches to extract features (genes) effective for classification and attribute them accordingly.
 
-https://github.com/SSSYDYSSS/TransProPy,
-https://sssydysss.github.io/TransProPyBook/.
+## Citation
+
+If you use TransPro in your research, please cite:
+
+Dongyue Yu; Chen Li; Shuo Yan; Lujiale Guo; Jingyu Liang; Shengquan Chen*; Wenjun Bu* (2026). Comparative Evaluation of Differential Gene Selection Methods in Transcriptomics: Bias Correction and Visualization with TransPro. Manuscript in preparation.
+
+**Correspondence:**  
+
+Shengquan Chen — School of Mathematical Sciences and LPMC, Nankai University, Tianjin 300071, China. 
+
+Wenjun Bu — Institute of Entomology, College of Life Sciences, Nankai University, Tianjin 300071, China.
+
 
 ## More examples see
 TransProPy Manual：https://sssydysss.github.io/TransProPyBook/
